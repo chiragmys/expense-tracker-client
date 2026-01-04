@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react'
 import ExpenseTable from '../components/Table'
 import FloatingAddButton from '../components/FloatingAddButton'
 import axios from 'axios'
+import { baseur1 } from '../api'
 
 export default function View() {
   const [allExpenses,setAllExpenses]=useState([])
   const fetchAllExpenses = async()=>{
       try {
         // console.log(error)
-        const res=await axios.get(`http://localhost:7000/api/expense/View-all`);
+        const res=await axios.get(`${baseur1}/api/expense/View-all`);
         console.log("data" ,res.data)
         if (res.data.success) {
           setAllExpenses(res.data.expenses);
